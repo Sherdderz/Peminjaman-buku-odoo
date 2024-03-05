@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <record id="gaez_peminjam_buku_view_tree" model="ir.ui.view">
+            <field name="name">gaez_peminjam_buku.view.tree</field>
+            <field name="model">gaez.peminjam.buku</field>
+            <field name="arch" type="xml">
+                <tree string="Peminjam Buku">
+                    <field name="name"/>
+                    <field name="fakultas"/>
+                    <field name="angkatan"/>
+                    <field name="tanggal_pinjam"/>
+                    <field name="tanggal_pengembalian"/>
+                </tree>
+            </field>
+        </record>
+    
+
+        <record id="gaez_peminjam_buku_view_form" model="ir.ui.view">
+            <field name="name">gaez_peminjam_buku.view.form</field>
+            <field name="model">gaez.peminjam.buku</field>
+            <field name="arch" type="xml">
+                <form string="Peminjam Buku">
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" states="draft"/>
+                        <button name="action_approved" string="Approved" type="object" groups="base.group_no_one" states="confirm"/>
+                        <button name="action_pinalty" string="Pinalty" type="object" states="confirm"/>
+                        <button name="action_closed" string="Closed" type="object" states="confirm,pinalty"/>
+                        <button name="set_to_draft" string="Set To Draft" type="object" states="pinalty,closed"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="buku_id" options="{'no_open': True, 'no_create': True}" force_save="1"/>
+                            <field name="genre_ids" widget="many2many_tags" options="{'no_open': True, 'no_create': True}" force_save="1" readonly="1"/>
+                            <field name="fakultas"/>
+                            <field name="angkatan"/>
+                            <field name="tanggal_pinjam"/>
+                            <field name="tanggal_pengembalian" force_save="1"/>
+                            <field name="today" force_save="1" readonly="1"/>
+                            <field name="denda" attrs="{'invisible':[('state', '!=', 'pinalty')]}"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="gaez_peminjam_buku_action" model="ir.actions.act_window">
+            <field name="name">Peminjam Buku</field>
+            <field name="res_model">gaez.peminjam.buku</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="gaez_peminjam_buku_menu" name="Peminjam Buku" action="gaez_peminjam_buku_action" parent="gaez_buku.gaez_buku_menu" sequence="5"/>
+    </data>
+    
+
+</odoo>
