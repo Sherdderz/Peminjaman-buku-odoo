@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "gaez_buku",
+    'name': "Peminjaman Buku",
 
     'summary': """
         Short (1 phrase/line) summary of the module's purpose, used as
@@ -10,8 +10,8 @@
         Long description of module's purpose
     """,
 
-    'author': "Gaez",
-    'website': "http://www.yourcompany.com",
+    'author': "Muhammad Rizky Gaez",
+    'website': "https://www.linkedin.com/in/muhammad-rizky-gaez-743022166/",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -25,10 +25,11 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/master_buku_views.xml',
-        'views/peminjam_buku_views.xml',
-        'views/master_genre_buku_views.xml',
         'data/ir_cron.xml',
+        'data/mail_data.xml',
+        'views/peminjam_buku_views.xml',
+        'views/master_buku_views.xml',
+        'views/master_genre_buku_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

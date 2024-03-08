@@ -33,7 +33,7 @@
             <field name="view_mode">tree,form</field>
         </record>
     
-        <menuitem id="gaez_genre_buku_menu" name="Genre Buku" action="gaez_genre_buku_action" parent="gaez_buku.gaez_buku_menu" sequence="10"/>
+        <menuitem id="gaez_genre_buku_menu" name="Genre Buku" action="gaez_genre_buku_action" parent="gaez_buku.configuration_buku_menu" sequence="10"/>
 
     </data>
     

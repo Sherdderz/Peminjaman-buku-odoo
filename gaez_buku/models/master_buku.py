@@ -12,5 +12,6 @@ class GaezBuku(models.Model):
     penulis = fields.Char(string="Penulis", required=True)
     terbit = fields.Char(string="Tahun Terbit", required=True) 
     genre = fields.Many2many(comodel_name='gaez.genre.buku', string="Genre") 
+    stock = fields.Integer(string="Stok")
     is_skripsi = fields.Boolean(string="Skripsi?", default=False)
     denda = fields.Float(string="Denda", required=True)

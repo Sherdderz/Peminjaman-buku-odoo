@@ -27,21 +27,27 @@
                         <button name="action_confirm" string="Confirm" type="object" states="draft"/>
                         <button name="action_approved" string="Approved" type="object" groups="base.group_no_one" states="confirm"/>
                         <button name="action_pinalty" string="Pinalty" type="object" states="confirm"/>
-                        <button name="action_closed" string="Closed" type="object" states="confirm,pinalty"/>
+                        <button name="action_closed" string="Closed" type="object" states="approved,pinalty"/>
                         <button name="set_to_draft" string="Set To Draft" type="object" states="pinalty,closed"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                     <sheet>
                         <group>
-                            <field name="name" options="{'no_open': True, 'no_create': True}"/>
-                            <field name="buku_id" options="{'no_open': True, 'no_create': True}" force_save="1"/>
-                            <field name="genre_ids" widget="many2many_tags" options="{'no_open': True, 'no_create': True}" force_save="1" readonly="1"/>
-                            <field name="fakultas"/>
-                            <field name="angkatan"/>
-                            <field name="tanggal_pinjam"/>
-                            <field name="tanggal_pengembalian" force_save="1"/>
-                            <field name="today" force_save="1" readonly="1"/>
-                            <field name="denda" attrs="{'invisible':[('state', '!=', 'pinalty')]}"/>
+                            <group>
+                                <field name="name" options="{'no_open': True, 'no_create': True}"/>
+                                <field name="buku_id" options="{'no_open': True, 'no_create': True}" force_save="1"/>
+                                <field name="stock_buku" force_save="1" readonly="1"/>
+                                <field name="genre_ids" widget="many2many_tags" options="{'no_open': True, 'no_create': True}" force_save="1" readonly="1"/>
+                                <field name="fakultas"/>
+                                <field name="angkatan"/>
+                            </group>
+                            <group>
+                                <field name="email" required="1"/>
+                                <field name="tanggal_pinjam"/>
+                                <field name="tanggal_pengembalian" required="1"/>
+                                <field name="today" force_save="1" readonly="1" invisible="1"/>
+                                <field name="denda" attrs="{'invisible':[('state', '!=', 'pinalty')]}"/>
+                            </group>
                         </group>
                     </sheet>
                     <div class="oe_chatter">
@@ -59,6 +65,7 @@
             <field name="view_mode">tree,form</field>
         </record>
 
+        <menuitem id="gaez_buku_menu" name="Buku" action="gaez_peminjam_buku_action"/>
         <menuitem id="gaez_peminjam_buku_menu" name="Peminjam Buku" action="gaez_peminjam_buku_action" parent="gaez_buku.gaez_buku_menu" sequence="5"/>
     </data>
     

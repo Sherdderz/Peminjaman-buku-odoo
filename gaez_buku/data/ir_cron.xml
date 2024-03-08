@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <data>
-
+    <data noupdate="1">
         <record id="ir_cron_peminjam_buku" model="ir.cron">
             <field name="name">Pinalty Peminjam Buku</field>
             <field name="model_id" ref="model_gaez_peminjam_buku"/>
@@ -14,8 +12,6 @@
             <field name="numbercall">-1</field>
             <field eval="False" name="doall" />
         </record>
-    
     </data>
-    
-
 </odoo>
+
