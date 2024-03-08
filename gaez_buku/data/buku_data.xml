@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="1">
+    
+        <record id="tes_1" model="gaez.genre.buku">
+            <field name="name">Test 1</field>
+        </record>
+
+        <record id="buku_tes_1" model="gaez.buku">
+            <field name="name">Buku Tes 1</field>
+            <field name="penulis">Tes 1</field>
+            <field name="terbit">2000</field>
+            <field name="genre" eval="[ (6, 0, [ref('gaez_buku.tes_1')]) ]"/>
+            <field name="stock">1</field>
+            <field name="is_skripsi">False</field>
+            <field name="denda">5000</field>
+        </record>
+    
+    </data>
+    
+
+</odoo>

@@ -24,12 +24,14 @@
 
     # always loaded
     'data': [
+        'security/buku_security.xml',
         'security/ir.model.access.csv',
         'data/ir_cron.xml',
         'data/mail_data.xml',
         'views/peminjam_buku_views.xml',
         'views/master_buku_views.xml',
         'views/master_genre_buku_views.xml',
+        'data/buku_data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

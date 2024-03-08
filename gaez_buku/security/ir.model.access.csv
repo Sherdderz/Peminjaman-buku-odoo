@@ -1,4 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_master_buku,master_buku,model_gaez_buku,base.group_user,1,1,1,1
-access_master_genre_buku,master_genre_buku,model_gaez_genre_buku,base.group_user,1,1,1,1
-access_peminjam_buku,peminjam_buku,model_gaez_peminjam_buku,base.group_user,1,1,1,1
+access_master_buku,master_buku,model_gaez_buku,gaez_buku.group_buku_manager,1,1,1,1
+access_master_genre_buku,master_genre_buku,model_gaez_genre_buku,gaez_buku.group_buku_manager,1,1,1,1
+access_peminjam_buku,peminjam_buku,model_gaez_peminjam_buku,gaez_buku.group_buku_manager,1,1,1,1
+
+access_master_buku_user,master.buku.user,model_gaez_buku,base.group_user,1,0,0,0
+access_master_genre_buku_user,master.genre.buku.user,model_gaez_genre_buku,base.group_user,1,0,0,0
+access_peminjam_buku_user,peminjam.buku.user,model_gaez_peminjam_buku,base.group_user,1,1,1,0

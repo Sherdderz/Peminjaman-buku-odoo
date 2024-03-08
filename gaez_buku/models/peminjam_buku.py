@@ -13,7 +13,7 @@ class PeminjamBuku(models.Model):
 
     name = fields.Many2one(comodel_name='res.users', default=lambda self: self.env.user, required=True)
     email = fields.Char(string="Email")
-    buku_id = fields.Many2one(comodel_name='gaez.buku', string="Buku", required=True)
+    buku_id = fields.Many2one(comodel_name='gaez.buku', string="Buku", required=True, domain=[('stock', '>=', 1)])
     stock_buku = fields.Integer(string="Stok Buku")
     genre_ids = fields.Many2many(comodel_name='gaez.genre.buku', string="Genre")
     fakultas = fields.Selection([('fti', 'FTI'),('feb', 'FEB')], string="Fakultas")
@@ -92,7 +92,7 @@ class PeminjamBuku(models.Model):
         self.write({'state': 'closed'})
         
     def _cron_compute_penalty(self):
-        telat_records = self.search([('state', '=', 'confirm'), ('tanggal_pengembalian', '>', fields.Date.today())])
+        telat_records = self.search([('state', '=', 'approved'), ('tanggal_pengembalian', '>', fields.Date.today())])
         telat_records.write({'state': 'pinalty'})
         for rec in telat_records:
             rec.action_send_overdue_email()

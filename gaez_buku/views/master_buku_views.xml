@@ -43,7 +43,7 @@
         </record>
     
 
-        <menuitem id="configuration_buku_menu" name="Configuration" parent="gaez_buku.gaez_buku_menu"/>
+        <menuitem id="configuration_buku_menu" name="Configuration" parent="gaez_buku.gaez_buku_menu" groups="gaez_buku.group_buku_manager"/>
         <menuitem id="gaez_data_buku_menu" name="Data Buku" action="gaez_buku_action" parent="gaez_buku.configuration_buku_menu" sequence="2"/>
     </data>
     
